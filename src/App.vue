@@ -1,5 +1,5 @@
 <template>
-  <div id="app">asdf
+  <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
     <TodoList></TodoList>
@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<scirpt>
+<script>
 import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
@@ -38,4 +38,4 @@ export default{
     .shadow{
         box-shadow: 5px 10px 
     }
-<style>
+</style>

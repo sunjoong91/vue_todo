@@ -4,7 +4,7 @@
   </header>
 </template>
 
-<scirpt>
+<script>
 export default{
 
 }
@@ -16,4 +16,4 @@ export default{
         font-weight: 900;
         margin: 2.5rem 0 1.5rem;
     }
-<style>
+</style>

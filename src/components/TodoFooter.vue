@@ -2,11 +2,11 @@
   <div>footer</div>
 </template>
 
-<scirpt>
+<script>
 export default{
 
 }
 </script>
 
 <style>
-<style>
+</style>
