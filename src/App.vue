@@ -36,11 +36,8 @@ export default{
       this.todoItems = [];
     },
     removeTodo(todoItem,index){
-      if(confirm('삭제 하시겠습니까?')){
-        localStorage.removeItem(todoItem);
-        this.todoItems.splice(index,1);
-        alert('삭제 되었습니다.');
-      }
+      localStorage.removeItem(todoItem);
+      this.todoItems.splice(index,1);
     }
   },
   components: { 'TodoHeader':TodoHeader

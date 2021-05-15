@@ -11,7 +11,7 @@
             <!-- body 입력안하면 default body 튀어나옴 -->
             <span slot="body"></span>
             <span slot="footer" @click="showModal = false">
-                할 일을 입력하세요
+                {{message}}
                 <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
             </span>
         </modal>
@@ -33,11 +33,13 @@ export default{
     methods:{
         addTodo(){
             var value = this.newTodoItem;
+            debugger;
             if(value != ""){
                 this.$emit('addTodo',value);
                 this.clearInput();
             }else{
                 this.showModal = !this.showModal;
+                this.message = '할 일을 입력하세요.'
             }
         },
         clearInput(){
@@ -45,7 +47,7 @@ export default{
         }
     },
     components:{
-        Modal:Modal
+        Modal  : Modal
     }
 }
 </script>
@@ -74,6 +76,14 @@ export default{
     .addBtn{
         color:white;
         vertical-align:middle;
+    }
+
+    .fa-yes{
+        content: "네";
+    }
+
+    .fa-no{
+        content: "아니오";
     }
 
 </style>
