@@ -33,7 +33,6 @@ export default{
     methods:{
         addTodo(){
             var value = this.newTodoItem;
-            debugger;
             if(value != ""){
                 this.$emit('addTodo',value);
                 this.clearInput();
