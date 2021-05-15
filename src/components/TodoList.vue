@@ -1,14 +1,14 @@
 <template>
   <section>
-    <ul>
-      <li v-for="(todoItem, index) in propsdata" class="shadow">
+    <transition-group name="list" tag="ul">
+      <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
         <i class="checkBtn fas fa-check" aria-hidden="true"></i>
         {{todoItem}}
         <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
           <i class="far fa-trash-alt" aria-hidden="true"></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </section>
 </template>
 
@@ -17,13 +17,7 @@ export default{
   props: ['propsdata'],
   methods:{
     removeTodo(todoItem,index){
-      if(confirm('삭제 하시겠습니까?')){
-        localStorage.removeItem(todoItem);
-        this.todoItems.splice(index,1);
-        alert('삭제 되었습니다.');
-      }
-      // localStorage.setItem
-      // console.log(todoItem, index);
+      this.$emit('removeTodo',todoItem, index);
     }
   }
 }
@@ -57,5 +51,13 @@ export default{
   .removeBtn{
     margin-left: auto;
     color: #de4343;
+  }
+
+  .list-enter-active, list-leave-active{
+    transition: all 1s;
+  }
+  .list-enter, list-leave-to{
+    opacity: 0;
+    transform :translateY(30px);
   }
 </style>

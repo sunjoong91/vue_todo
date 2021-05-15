@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems"></TodoList>
+    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
   </div>
 </template>
@@ -34,6 +34,13 @@ export default{
     clearAll(){
       localStorage.clear();
       this.todoItems = [];
+    },
+    removeTodo(todoItem,index){
+      if(confirm('삭제 하시겠습니까?')){
+        localStorage.removeItem(todoItem);
+        this.todoItems.splice(index,1);
+        alert('삭제 되었습니다.');
+      }
     }
   },
   components: { 'TodoHeader':TodoHeader

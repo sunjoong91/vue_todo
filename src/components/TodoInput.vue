@@ -1,14 +1,23 @@
 <template>
   <div class="inputBox shadow">
         <input type="text" v-model="newTodoItem" placeholder="내용을 입력하세요." v-on:keyup.enter="addTodo">
-      <!--<button v-on:click="addTodo">추가</button>-->
+        <!--<button v-on:click="addTodo">추가</button>-->
         <span class="addContainer" v-on:click="addTodo">
             <i class="addBtn fas fa-plus" aria-hidden="true"></i>
         </span>
+
+        <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">경고</h3>
+            <span slot="footer" @click="showModal = false">
+                할 일을 입력하세요
+                <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
+            </span>
+        </modal>
   </div>
 </template>
 
 <script>
+import Modal from './common/Model.vue'
 export default{
     data(){
         return{
@@ -17,12 +26,9 @@ export default{
     },
     methods:{
         addTodo(){
-            //console.log(this.newTodoItem)
             var value = this.newTodoItem;
             if(value != ""){
-                //var value = this.newTodoItem && this.newTodoItem.trim();
                 this.$emit('addTodo',value);
-                // localStorage.setItem(value, value);
                 this.clearInput();
             }
         },
